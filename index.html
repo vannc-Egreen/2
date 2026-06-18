@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,user-scalable=yes,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,user-scalable=yes">
 <title>eGreen BDSC + Phiếu vật tư</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script>
@@ -352,10 +352,10 @@ setTimeout(()=>{
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 :root{--g:#0d6e3f;--g2:#16a05e;--gp:#e8f7f0;--gd:#083d24;--s:#0f172a;--s2:#1e293b;--s3:#334155;--mu:#64748b;--bd:#e2e8f0;--bg:#f0f4f2;--card:#fff;--red:#dc2626;--amb:#d97706;--bl:#2563eb;--pu:#7c3aed;--font:'Be Vietnam Pro',sans-serif;--mono:'JetBrains Mono',monospace;--sh:0 1px 3px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.05);--shl:0 8px 32px rgba(0,0,0,.13);--r:10px;--rl:16px}
 *{box-sizing:border-box;margin:0;padding:0;font-family:var(--font)}
-/* ── V72.1 Responsive base: chặn overflow ngang & cho desktop dùng toàn bộ width ── */
-html{overflow-x:hidden;width:100%;max-width:100vw}
-body{background:var(--bg);color:var(--s);min-height:100vh;font-size:14px;overflow-x:hidden;width:100%;max-width:100vw}
-#app{width:100%;max-width:100vw;overflow-x:hidden}
+/* ── V72.3 Responsive base: chặn overflow ngang TRIỆT ĐỂ & cho desktop dùng toàn bộ width ── */
+html{overflow-x:hidden;width:100%;max-width:100vw;position:relative}
+body{background:var(--bg);color:var(--s);min-height:100vh;font-size:14px;overflow-x:hidden;width:100%;max-width:100vw;position:relative}
+#app{width:100%;max-width:100vw;overflow-x:hidden;position:relative}
 ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
 #authWrap{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(145deg,#083d24,#0d6e3f 50%,#1a9962);padding:16px}
 .abox{background:#fff;border-radius:20px;width:420px;max-width:100%;box-shadow:var(--shl);overflow:hidden}
@@ -382,8 +382,9 @@ body{background:var(--bg);color:var(--s);min-height:100vh;font-size:14px;overflo
 .tbtn:hover{background:rgba(255,255,255,.22)}.sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}.sdot.on{background:#4ade80}.sdot.off{background:#f87171}
 .sspin{display:none;width:12px;height:12px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
-.layout{display:flex;flex:1;overflow:hidden;width:100%;max-width:100vw}
-.sidebar{width:206px;flex-shrink:0;background:#fff;border-right:1px solid var(--bd);display:flex;flex-direction:column;height:calc(100vh - 54px);position:sticky;top:54px;overflow-y:auto}
+.layout{display:flex;flex:1;overflow:hidden;width:100%;max-width:100vw;min-width:0}
+/* V72.3 FIX TRÀN NGANG: ép tất cả container cho phép co lại (min-width:0) */
+.sidebar{width:206px;flex-shrink:0;background:#fff;border-right:1px solid var(--bd);display:flex;flex-direction:column;height:calc(100vh - 54px);position:sticky;top:54px;overflow-y:auto;min-width:0}
 .nsec{padding:14px 10px 3px;font-size:9px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.8px}
 .nitem{display:flex;align-items:center;gap:8px;padding:8px 13px;margin:1px 6px;border-radius:8px;cursor:pointer;transition:.12s;color:var(--s3);font-size:12px;font-weight:500}
 .nitem:hover{background:#f0fdf4;color:var(--g)}.nitem.on{background:var(--gp);color:var(--g);font-weight:700}
@@ -391,18 +392,18 @@ body{background:var(--bg);color:var(--s);min-height:100vh;font-size:14px;overflo
 .nbadge{margin-left:auto;background:var(--g);color:#fff;font-size:9px;font-weight:800;padding:1px 6px;border-radius:99px;min-width:16px;text-align:center}
 .nbadge.am{background:var(--amb)}.nbadge.rd{background:var(--red)}
 .sfooter{margin-top:auto;padding:10px;border-top:1px solid var(--bd);font-size:10px;color:var(--mu)}
-.content{flex:1;overflow-y:auto;overflow-x:hidden;height:calc(100vh - 54px);background:var(--bg);max-width:100%}
-.page{display:none;padding:16px 20px;max-width:1800px;margin:0 auto;width:100%;box-sizing:border-box}.page.on{display:block}.page.full-w{max-width:100%}
+.content{flex:1;overflow-y:auto;overflow-x:hidden;height:calc(100vh - 54px);background:var(--bg);max-width:100%;min-width:0}
+.page{display:none;padding:16px 20px;max-width:1800px;margin:0 auto;width:100%;box-sizing:border-box;min-width:0}.page.on{display:block}.page.full-w{max-width:100%}
 .ph{margin-bottom:16px}.ph h1{font-size:19px;font-weight:800;color:var(--s)}.ph p{font-size:12px;color:var(--mu);margin-top:1px}
-.card{background:var(--card);border-radius:var(--rl);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px}
-.ch{padding:12px 16px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
-.ch h3{font-size:12px;font-weight:700;color:var(--s2)}.cb{padding:14px 16px}
-.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:11px;margin-bottom:16px}
-.kcard{background:var(--card);border-radius:var(--rl);padding:14px 16px;box-shadow:var(--sh);border-left:4px solid var(--g)}
+.card{background:var(--card);border-radius:var(--rl);box-shadow:var(--sh);overflow:hidden;margin-bottom:14px;width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.ch{padding:12px 16px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;min-width:0}
+.ch h3{font-size:12px;font-weight:700;color:var(--s2)}.cb{padding:14px 16px;min-width:0}
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:11px;margin-bottom:16px;min-width:0}
+.kcard{background:var(--card);border-radius:var(--rl);padding:14px 16px;box-shadow:var(--sh);border-left:4px solid var(--g);min-width:0;overflow:hidden}
 .kcard.bl{border-left-color:var(--bl)}.kcard.am{border-left-color:var(--amb)}.kcard.rd{border-left-color:var(--red)}.kcard.pu{border-left-color:var(--pu)}
 .klbl{font-size:9px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px}
 .kval{font-size:26px;font-weight:800;color:var(--s);line-height:1;margin-bottom:2px}.ksub{font-size:10px;color:var(--mu)}
-.tw{overflow-x:auto}.tw table{width:100%}.tw td,.tw th{white-space:nowrap}.tw.wrap td,.tw.wrap th{white-space:normal}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;min-width:0;width:100%}.tw table{width:100%}.tw td,.tw th{white-space:nowrap}.tw.wrap td,.tw.wrap th{white-space:normal}
 table{width:100%;border-collapse:collapse;font-size:12px}
 thead th{background:#f8fafc;padding:9px 12px;text-align:left;font-size:10px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid var(--bd);white-space:nowrap;position:sticky;top:0;z-index:1}
 tbody tr{border-bottom:1px solid #f1f5f9;transition:.1s}tbody tr:hover{background:#f8fffe}td{padding:9px 12px;vertical-align:middle;font-size:12px}
@@ -416,8 +417,8 @@ tbody tr{border-bottom:1px solid #f1f5f9;transition:.1s}tbody tr:hover{backgroun
 .bg-gr{background:#f8fafc;color:var(--s);border:1px solid var(--bd)}.bg-gr:hover{background:#f1f5f9}
 .bg-a{background:#fffbeb;color:var(--amb);border:1px solid #fde68a}.bg-a:hover{background:#fef3c7}
 .btn.sm{padding:3px 8px;font-size:10px}.rep-actions{display:flex;gap:3px;align-items:center;justify-content:flex-start}.rep-actions .btn{width:30px;height:24px;justify-content:center;padding:3px 0}.rep-actions .btn.disabled{opacity:.75}
-.fsec{background:var(--card);border-radius:var(--rl);box-shadow:var(--sh);margin-bottom:13px;overflow:visible}
-.fsh{background:linear-gradient(90deg,#f0fdf4,#fff);padding:11px 16px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px}
+.fsec{background:var(--card);border-radius:var(--rl);box-shadow:var(--sh);margin-bottom:13px;overflow:visible;min-width:0;width:100%;box-sizing:border-box;max-width:100%}
+.fsh{background:linear-gradient(90deg,#f0fdf4,#fff);padding:11px 16px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px;min-width:0;flex-wrap:wrap}
 .fsn{width:22px;height:22px;background:var(--g);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0}
 .fst{font-size:12px;font-weight:700;color:var(--s2)}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:11px;padding:14px 16px}
@@ -640,14 +641,87 @@ tbody tr{border-bottom:1px solid #f1f5f9;transition:.1s}tbody tr:hover{backgroun
    • Mọi container đều ràng max-width:100% để khỏi tràn ngang.
    ════════════════════════════════════════════════════════════════ */
 .fsec, .card, .kcard, .cb, .ch, .ph, .iw, .fgrid {
-  max-width:100%; box-sizing:border-box;
+  max-width:100%; box-sizing:border-box; min-width:0;
 }
 .fgrid{ width:100%; }
 .inp, .sel, .ta { max-width:100%; box-sizing:border-box; }
 /* Bảng dài: đảm bảo có thanh kéo ngang trên mọi kích thước nếu vượt khung */
-.pv-table-wrap, .pv16-scroll, .pv17-scroll, .v53-scroll, .tw { max-width:100%; }
+.pv-table-wrap, .pv16-scroll, .pv17-scroll, .v53-scroll, .tw { max-width:100%; min-width:0; }
 /* Wrappers chứa table bên trong fsec/card → scroll ngang nếu cần */
-.fsec > div[style*="overflow-x"], .card > div[style*="overflow-x"]{ max-width:100%; }
+.fsec > div[style*="overflow-x"], .card > div[style*="overflow-x"]{ max-width:100%; min-width:0; }
+
+/* ════════════════════════════════════════════════════════════════
+   V72.3 — FIX TRÀN NGANG TRIỆT ĐỂ
+   Vấn đề Flexbox: khi flex item (.content) chứa nội dung lớn hơn nó
+   (bảng min-width:1050px+), flex item sẽ phình ra không co lại được
+   vì mặc định min-width của flex item = auto. Phải ép min-width:0
+   xuống toàn chain để cho phép co lại và scroll bên trong wrapper.
+   ════════════════════════════════════════════════════════════════ */
+#app, .layout, .content, .page,
+.card, .cb, .ch, .fsec, .fsh, .fgrid, .iw,
+.tw, .tblwrap, .pv-table-wrap,
+.pv16-scroll, .pv17-scroll, .v53-scroll, .pv17-list-wrap,
+#pvFormRoot, #pvHistoryRoot, #pvCompleteRoot,
+#pvb_formWrap, #pv16Root, #pv17Root, #pv18Root, #pv19Root,
+.v53-kpis, .v59-kpis, .v65-kpis,
+[id^="pg-"]{
+  min-width:0 !important;
+}
+/* Bảng dài: BẮT BUỘC nằm trong một wrapper có overflow-x:auto */
+.tblwrap{
+  overflow-x:auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  width:100% !important;
+}
+/* V72.3: bao quát toàn bộ wrapper bảng dài → bảo đảm scroll ngang & không tràn */
+.pv68-table-wrap, .pv69-table-wrap, .v64-editor-wrap,
+.pv16-scroll, .pv17-scroll, .pv18-scroll, .pv19-scroll,
+.v53-scroll, .v65-scroll, .pv-table-wrap, .tw, .tblwrap,
+.pv17-list-wrap{
+  overflow-x:auto !important;
+  -webkit-overflow-scrolling:touch !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  width:100% !important;
+}
+/* Mọi grid với repeat(N, 1fr) trong page nội dung: ép minmax(0,1fr) để các cột không phình */
+[id^="pg-"] [style*="grid-template-columns:repeat"],
+[id^="pg-"] [style*="grid-template-columns: repeat"]{
+  /* Không thể override inline style cứng, nhưng các grid không inline sẽ được ép */
+}
+/* V72.3: ép children của grid 4 cột inline có thể co lại — chống tràn ngang trên màn hình hẹp */
+[style*="grid-template-columns:repeat(4,1fr)"] > *,
+[style*="grid-template-columns: repeat(4, 1fr)"] > *,
+[style*="grid-template-columns:repeat(3,1fr)"] > *,
+[style*="grid-template-columns: repeat(3, 1fr)"] > *,
+[style*="grid-template-columns:repeat(2,1fr)"] > *,
+[style*="grid-template-columns: repeat(2, 1fr)"] > *,
+[style*="grid-template-columns:1fr 1fr"] > *,
+[style*="grid-template-columns:1fr 1fr 1fr"] > *{
+  min-width:0 !important;
+  overflow:hidden;
+}
+/* Wrap text trong các grid để khỏi đè rộng cell — chỉ với KPI/dashboard cards */
+.kcard, .v53-kpi, .v59-kpi, .v65-kpi, .v64-kpi, .pv68-kpi{
+  overflow:hidden;
+  min-width:0;
+}
+/* KPI grid: ép thành minmax(0,1fr) để chống tràn */
+.v53-kpis, .v59-kpis, .v65-kpis, .v64-kpis{
+  display:grid !important;
+  grid-template-columns:repeat(auto-fit,minmax(0,1fr)) !important;
+  gap:10px !important;
+  width:100% !important;
+}
+/* Khi inline style ép cố định repeat(4,1fr), vẫn cần cho phép cell co */
+.v53-kpis > *, .v59-kpis > *, .v65-kpis > *, .v64-kpis > *,
+.v53-kpi, .v59-kpi, .v65-kpi, .v64-kpi{
+  min-width:0;
+  overflow:hidden;
+}
+.v53-kpi b, .v59-kpi b, .v65-kpi b{ font-size:clamp(20px, 4vw, 32px) !important; }
 
 /* ── Desktop large: tận dụng kết khu vực toàn màn hình ── */
 @media (min-width:1200px){
@@ -680,7 +754,7 @@ tbody tr{border-bottom:1px solid #f1f5f9;transition:.1s}tbody tr:hover{backgroun
     right:auto !important;
   }
   /* Bảng wide: đảm bảo wrapper có scroll ngang gọn */
-  .pv-table-wrap, .pv16-scroll, .pv17-scroll, .v53-scroll, .tw{
+  .pv-table-wrap, .pv16-scroll, .pv17-scroll, .v53-scroll, .tw, .tblwrap, .pv17-list-wrap{
     max-width:calc(100vw - 20px) !important;
     overflow-x:auto !important;
     -webkit-overflow-scrolling:touch !important;
@@ -9925,25 +9999,25 @@ nav=function(p){
             <button class="btn bg-g sm" onclick="pvBDSCRefreshHistory_(true,true).then(()=>pv17RenderCompletePage())" title="Nhấn để tải lại ngay nếu cần">↻ Làm mới</button>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0 14px" id="pv-kpi-row">
-          <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:10px;padding:12px;text-align:center">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0 14px;min-width:0" id="pv-kpi-row">
+          <div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:10px;padding:12px;text-align:center;min-width:0;overflow:hidden">
             <div style="font-size:28px;font-weight:800;color:#0d6e3f" id="pv-kpi-total">${total}</div>
             <div style="font-size:10px;font-weight:600;color:#0d6e3f;margin-top:2px">Tổng phiếu</div>
           </div>
-          <div style="background:#fffbeb;border:1.5px solid #fde68a;border-radius:10px;padding:12px;text-align:center">
+          <div style="background:#fffbeb;border:1.5px solid #fde68a;border-radius:10px;padding:12px;text-align:center;min-width:0;overflow:hidden">
             <div style="font-size:28px;font-weight:800;color:#d97706" id="pv-kpi-wait">${wait.length}</div>
             <div style="font-size:10px;font-weight:600;color:#d97706;margin-top:2px">Chờ hoàn thành</div>
           </div>
-          <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:12px;text-align:center">
+          <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:12px;text-align:center;min-width:0;overflow:hidden">
             <div style="font-size:28px;font-weight:800;color:#16a34a" id="pv-kpi-done">${done.length}</div>
             <div style="font-size:10px;font-weight:600;color:#16a34a;margin-top:2px">Đã hoàn thành</div>
           </div>
-          <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:12px;text-align:center">
+          <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:10px;padding:12px;text-align:center;min-width:0;overflow:hidden">
             <div style="font-size:28px;font-weight:800;color:#2563eb" id="pv-kpi-pct">${total>0?Math.round(done.length/total*100):0}%</div>
             <div style="font-size:10px;font-weight:600;color:#2563eb;margin-top:2px">Tỷ lệ hoàn thành</div>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;min-width:0">
           <div>
             <div style="font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;margin-bottom:8px">📅 Tần suất tạo phiếu (14 ngày gần nhất)</div>
             <div style="position:relative;height:160px"><canvas id="pv-daily-chart"></canvas></div>
@@ -19329,6 +19403,91 @@ window.v43SubmitXuat=async function(mp){
   window.pv69AddCompleteRow=function(){ var tb=document.querySelector('#pv69_complete_table tbody'); if(!tb){toastX('Chưa mở bảng hoàn thành phiếu','err');return;} var ph={danhSachMaMay:''}; var sub=document.querySelector('.pv69-sub'); if(sub)ph.danhSachMaMay=(sub.textContent||'').split('·')[0].trim(); tb.insertAdjacentHTML('beforeend',rowHTML({__new:true,loaiDong:'Phát sinh',nguonVatTu:'Phát sinh',soLuongXuatKho:'',donViTinh:'Cái',ghiChu:''},tb.children.length,ph)); bindCalc(); var last=tb.lastElementChild; if(last){var inp=last.querySelector('[data-k="tenVatTu"]'); if(inp)inp.focus();} };
   window.pv17AddCompleteRow=window.pv69AddCompleteRow; window.pv16AddCompleteRow=window.pv69AddCompleteRow;
   window.pv17CollectCompleteItems=function(){ var rows=Array.from(document.querySelectorAll('#pv69_complete_table tbody tr')); return rows.map(function(tr,i){ updateUse(tr); var obj={stt:i+1}; tr.querySelectorAll('[data-k]').forEach(function(el){ obj[el.dataset.k]=el.value; }); if(!obj.tenVatTu)obj.tenVatTu=obj.tenVatTuGoc||''; obj.tenVatTuGoc=obj.tenVatTuGoc||obj.tenVatTu; obj.donViTinh=obj.donViTinh||'Cái'; obj.soLuongCan=obj.soLuongXuatKho; obj.soLuongNhapKho=fmt(num(obj.soLuongNhapMoi)+num(obj.soLuongNhapCu)+num(obj.soLuongNhapTot)+num(obj.soLuongNhapKxd)); obj.soLuongSuDung=fmt(num(obj.soLuongXuatKho)-num(obj.soLuongNhapKho)); if(!obj.loaiDong)obj.loaiDong=(tr.getAttribute('data-origin')==='phat-sinh')?'Phát sinh':'Chuẩn bị'; var filled=['Moi','Cu','Tot','Kxd'].filter(function(k){return num(obj['soLuongNhap'+k])>0;}); obj.tinhTrangNhapKho=filled.length===1?({Moi:'Mới',Cu:'Cũ',Tot:'Tốt',Kxd:'K.xđ'}[filled[0]]):(filled.length?'Tách tình trạng':''); return obj; }).filter(function(x){return String(x.tenVatTu||x.tenVatTuGoc||'').trim();}); };
+})();
+</script>
+
+<script>
+/* ════════════════════════════════════════════════════════════════
+ * V72.3 — AUTO-DETECT & FIX OVERFLOW (lá chắn cuối cùng)
+ * Nếu vẫn còn 1 element nào đó tràn ngang khiến trình duyệt mobile
+ * tự thu zoom, script này tìm và clamp lại width của nó.
+ * Chỉ chạy 1 lần ngắn sau load, hoặc khi đổi page.
+ * ════════════════════════════════════════════════════════════════ */
+(function(){
+  var fixing = false;
+  function fixOverflowOnce(){
+    if(fixing) return;
+    fixing = true;
+    try{
+      var vw = document.documentElement.clientWidth || window.innerWidth;
+      if(!vw) { fixing = false; return; }
+      // Quét tất cả phần tử trong body, tìm element có right > viewport
+      var nodes = document.body.querySelectorAll('*');
+      var fixed = 0;
+      for(var i=0; i<nodes.length; i++){
+        var el = nodes[i];
+        // Bỏ qua sidebar (vị trí ngoài viewport là cố ý)
+        if(el.classList && (el.classList.contains('sidebar') || el.classList.contains('mob-overlay'))) continue;
+        // Bỏ qua element ẩn
+        var cs = window.getComputedStyle(el);
+        if(cs.display === 'none' || cs.visibility === 'hidden') continue;
+        // Bỏ qua element trong scroll wrapper (đã có overflow:auto)
+        var p = el.parentElement;
+        var insideScroll = false;
+        while(p && p !== document.body){
+          var ps = window.getComputedStyle(p);
+          if(ps.overflowX === 'auto' || ps.overflowX === 'scroll' || ps.overflowX === 'hidden'){ insideScroll = true; break; }
+          p = p.parentElement;
+        }
+        if(insideScroll) continue;
+        // Kiểm tra overflow
+        var rect = el.getBoundingClientRect();
+        if(rect.right > vw + 2){
+          // Element này tràn. Clamp lại
+          el.style.maxWidth = '100%';
+          el.style.boxSizing = 'border-box';
+          // Nếu là grid/flex container có grid-template-columns cứng, ép cho phép co
+          if(cs.display.indexOf('grid') >= 0){
+            // Cho phép cell co
+            for(var j=0; j<el.children.length; j++){
+              el.children[j].style.minWidth = '0';
+            }
+          }
+          fixed++;
+          if(fixed > 30) break; // tránh chạy quá lâu
+        }
+      }
+      // Nếu vẫn còn document overflow → ép body overflow-x:hidden
+      if(document.documentElement.scrollWidth > vw + 2){
+        document.documentElement.style.overflowX = 'hidden';
+        document.body.style.overflowX = 'hidden';
+      }
+    }catch(e){
+      console.warn('[v72.3 overflow fixer]', e);
+    } finally {
+      fixing = false;
+    }
+  }
+  // Chạy lần đầu sau khi load
+  if(document.readyState === 'complete') setTimeout(fixOverflowOnce, 600);
+  else window.addEventListener('load', function(){ setTimeout(fixOverflowOnce, 600); });
+  // Chạy lại khi đổi page (nav)
+  var oldNav = window.nav;
+  if(typeof oldNav === 'function'){
+    window.nav = function(){
+      var r = oldNav.apply(this, arguments);
+      setTimeout(fixOverflowOnce, 400);
+      return r;
+    };
+  }
+  // Chạy lại khi resize
+  var resizeTm;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTm);
+    resizeTm = setTimeout(fixOverflowOnce, 300);
+  });
+  // Expose để có thể gọi tay nếu cần
+  window.__v723FixOverflow = fixOverflowOnce;
 })();
 </script>
 
